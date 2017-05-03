@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Giglist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Gig</h1>
+		<form th:object="${gig}" th:action="@{save}" action="#" method="post">
+		  	<p>Date<input type = "text" id ="dat" th:field="*{date}"/></p>
+		  	<p>Venue<input type = "text" id ="ven" th:field="*{venue}"/></p>
+		  	<p>Time<input type = "text" id ="tim" th:field="*{time}"/></p>
+		  	<input type="submit" value="Save"></input>
+		</form>
+</body>
+</html>

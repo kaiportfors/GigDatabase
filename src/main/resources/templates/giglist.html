@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Giglist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type = "text/css" rel = "stylesheet" href = "webjars/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+</head>
+<body>
+	<h1>Tour Dates</h1>
+	<div class = "container">
+    <table class = "table table-striped" >
+    	<thead>
+			<tr>
+			    <th>Date</th>
+			    <th>Venue</th>
+			    <th>Time</th>
+			</tr>
+		</thead>
+		<tr th:each = "gig:${gigs}">
+			<td th:text = "${gig.date} + ' ' "></td>
+			<td th:text = "${gig.venue} + ' ' "></td>
+			<td th:text = "${gig.time} + ' ' "></td>
+			 <td sec:authorize="hasAuthority('ADMIN')"> <a class = "btn btn-danger" th:href="@{/delete/{id}(id=${gig.id})}">Delete</a></td>
+		</tr>  
+	</table>
+	<td sec:authorize="hasAuthority('ADMIN')"> <a class = "btn btn-success" href="/add">Add Gig</a></td>
+	</div>
+	<script scr = "webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script scr = "webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
